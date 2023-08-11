@@ -1,13 +1,21 @@
 import React, {useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {RootState} from '../app/store'
-import {toggleCompleted, deleteTask, editTask} from './taskSlice'
+import {toggleCompleted, deleteTask} from './taskSlice'
 import {Task} from './taskSlice'
 import EditTask from './EditTask'
 
+// show type of tasks
+
 const TaskList: React.FC = () => {
 
-    const tasks = useSelector((state: RootState) => state.task.tasks)
+    const tasks = useSelector((state: RootState) => {
+        if (state.task.filter){
+            return state.task.tasks.filter((task: Task) => task.completed)
+
+        }
+        return state.task.tasks;
+    })
     const dispatch = useDispatch()
     const [editingTask, setEditingTask] = useState<string| null>(null)
 

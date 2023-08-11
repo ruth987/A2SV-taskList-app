@@ -10,6 +10,7 @@ export interface Task {
 
 interface TaskState {
     tasks: Task[];
+    filter: boolean;
 }
 
 const initialState: TaskState = {
@@ -19,6 +20,7 @@ const initialState: TaskState = {
         content: "This is the first task.",
         completed: false,
     }],
+    filter: false,
 };
 
 const taskSlice = createSlice({
@@ -51,12 +53,16 @@ const taskSlice = createSlice({
                 task.content = action.payload.content;
             }
         }, 
+        toggleFilter: (state) => {
+            state.filter = !state.filter;
+            //state.tasks = state.tasks.filter((task) => !task.completed);
+        }
 
             
 
     }
 })
 
-export const { addTask, deleteTask, toggleCompleted, editTask } = taskSlice.actions;
+export const { addTask, deleteTask, toggleCompleted, editTask, toggleFilter } = taskSlice.actions;
 
 export default taskSlice.reducer;
