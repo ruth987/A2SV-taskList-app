@@ -26,6 +26,7 @@ const AddTaskForm: React.FC = () => {
           placeholder="Add a task title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          data-cy="task-title-input"
         />
       </div>
       <div className="mb-4">
@@ -34,11 +35,13 @@ const AddTaskForm: React.FC = () => {
           placeholder="Add a task description"
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          data-cy="task-content-input"
         />
       </div>
       <button
         className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300"
         onClick={handleAddTask}
+        data-cy="submit-button"
       >
         Add Task
       </button>

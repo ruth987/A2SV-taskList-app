@@ -30,6 +30,7 @@ const TaskList: React.FC = () => {
           <li
             key={task.id}
             className="bg-white p-6 rounded-lg shadow-md flex items-center justify-between"
+            data-cy="task"
           >
             {editingTask === task.id ? (
               <EditTask
@@ -74,12 +75,14 @@ const TaskList: React.FC = () => {
                   <button
                     className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600 transition duration-300"
                     onClick={() => dispatch(deleteTask(task.id))}
+                    data-cy="delete-button"
                   >
                     Delete
                   </button>
                   <button
                     className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600 transition duration-300"
                     onClick={() => handleEditClick(task.id)}
+                    data-cy="edit-button"
                   >
                     Edit
                   </button>
